@@ -1,0 +1,105 @@
+@import "normalize.css";
+html,
+body {
+    height: 100%;
+    background-color: #eef0f3;
+}
+*,
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ul li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+*,
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    min-height: 100%;
+    height: 100%;
+}
+.fm2-container {
+    background: #fff;
+}
+.fm2-container .fm2-main {
+    display: flex;
+}
+.fm2-container .markform-left {
+    width: 200px !important;
+}
+.fm2-container .markform-left .components-list {
+    padding: 8px 0;
+    width: 100%;
+    height: 100%;
+}
+.fm2-container .markform-left .components-list .title {
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 30px;
+}
+.fm2-container .markform-left .components-list ul {
+    position: relative;
+    overflow: hidden;
+    padding: 0 10px 10px;
+    margin: 0;
+}
+.fm2-container .markform-left .components-list ul li.form-edit-label {
+    font-size: 12px;
+    display: block;
+    width: 45%;
+    line-height: 26px;
+    position: relative;
+    float: left;
+    left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 2%;
+    color: #333;
+    border: 1px solid #f4f6fc;
+}
+.fm2-container .markform-left .components-list ul li.form-edit-label a {
+    cursor: move;
+    background: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: inherit;
+    text-indent: 3px;
+}
+.fm2-container .markform-left .components-list ul li.form-edit-label a span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.fm2-container .center-container {
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+.fm2-container .center-container .btn-bar {
+    text-align: right;
+    padding-right: 50px;
+    font-size: 18px;
+    border-bottom: solid 2px #e4e7ed;
+}
+.fm2-container .center-container .widget-empty {
+    background: url("../images/form_empty.png") no-repeat;
+    background-position: 50%;
+}
+.fm2-container .markform-right {
+    margin: 0 10px;
+    height: 98vh;
+}
