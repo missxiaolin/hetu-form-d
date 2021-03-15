@@ -5,12 +5,10 @@ import store from './store'
 import './plugins/element.js'
 import axios from 'axios'
 
-import MarkingForm from './components/MarkingForm/MarkingForm.vue'
-import DeleteAttr from './components/Dialog/DeleteAttr'
-import Dialog from './components/Dialog/Dialog'
-
 // 引入样式
 import './assets/css/index.css'
+import './assets/css/base.css'
+import './assets/css/MarkingForm.css'
 
 // 剪切板
 import VueClipboard from 'vue-clipboard2'
@@ -19,12 +17,6 @@ import VueClipboard from 'vue-clipboard2'
 VueClipboard.config.autoSetContainer = true
 Vue.use(VueClipboard)
 Vue.prototype.axios = axios
-
-// 注册组件
-Vue.use(MarkingForm.name, MarkingForm)
-Vue.use(Dialog.name, Dialog)
-Vue.use(DeleteAttr.name, DeleteAttr)
-
 
 Vue.config.productionTip = false
 

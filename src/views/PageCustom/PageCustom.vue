@@ -1,11 +1,16 @@
 <template>
-  <div class="">页面编辑</div>
+  <div class="">
+    <marking-form></marking-form>
+  </div>
 </template>
 
 <script>
+import MarkingForm from '../../components/MarkingForm/MarkingForm'
 export default {
   name: "PageCustom",
-  components: {},
+  components: {
+    MarkingForm
+  },
   props: {},
   data() {
     return {};

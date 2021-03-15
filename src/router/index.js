@@ -12,13 +12,13 @@ const routes = [
     name: 'Home',
     component: Home
   }, {
-    path: 'page/view',
+    path: '/page/view',
     name: 'PagePreview',
-    components: PagePreview
+    component: PagePreview
   }, {
-    path: 'page/custom',
+    path: '/page/custom',
     name: 'PageCustom',
-    components: PageCustom
+    component: PageCustom
   }
 ]
 
