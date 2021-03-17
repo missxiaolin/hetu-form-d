@@ -30,6 +30,28 @@
                 >
               </li>
             </vuedraggable>
+            <div class="title">布局字段</div>
+            <vuedraggable
+              tag="ul"
+              :list="layoutComponents"
+              :group="{ name: 'people', pull: 'clone', put: false }"
+              :sort="false"
+              :ghostClass="'ghost'"
+            >
+              <li
+                class="form-edit-label"
+                v-for="(item, index) in layoutComponents"
+                :key="index"
+              >
+                <a
+                  :style="{ backgroundColor: item.backgroundColor }"
+                  href="javascript:;"
+                >
+                  <i :class="setClass(item.icon)"></i>
+                  {{ item.label }}</a
+                >
+              </li>
+            </vuedraggable>
           </div>
         </el-aside>
       </el-container>
@@ -41,27 +63,27 @@
 // 拖拽
 import vuedraggable from "vuedraggable";
 // 左边-配置
-import { basicComponents } from "../tool/ConponentsConfig";
+import { basicComponents, layoutComponents } from "../tool/ConponentsConfig";
 
 export default {
   name: "MarkingForm",
   components: {
-      vuedraggable
+    vuedraggable,
   },
   data() {
     return {
       // 默认基础字段
       basicComponents,
+      // 布局
+      layoutComponents
     };
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
-      setClass (icon) {
-      return icon
+    setClass(icon) {
+      return icon;
     },
-  }
+  },
 };
 </script>
 

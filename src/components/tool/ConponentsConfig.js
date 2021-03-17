@@ -365,3 +365,76 @@ export const basicComponents = [
         }
     }
 ]
+
+/**
+ * 布局字段
+ *  * 栅格
+ *  * 文本
+ *  * 面板
+ */
+export const layoutComponents = [
+    {
+        key: null,
+        type: 'grid',
+        label: '栅格布局',
+        icon: 'el-icon-s-grid',
+        backgroundColor: '#ffffff',
+        className: '',
+        issys: 0,
+        // columns：下属包含在el-col，设置属性，for循环添加一个item一个
+        // 一个item，就是一个el-col（注意是给的list）
+        // columns: [
+        //   {
+        //     span: 24,
+        //     minHeight: 60,
+        //     list: [
+        //       // {}：内部元素添加属性-ColAttr：
+        //     ]
+        //   }
+        // ],
+        // columns：内涵el-row（大的，一个）
+        columns: [
+            {
+                span: 12,
+                list: []
+            },
+            {
+                span: 12,
+                list: []
+            }
+        ],
+        // el-row
+        options: {
+            gutter: 0, // 栅格间隔
+            type: 'flex', // 类型
+            justify: 'start', // flex 布局下的水平排列方式:start/end/center/space-around/space-between
+            align: 'top', // flex 布局下的垂直排列方式
+            tag: 'div' // 自定义元素标签
+        }
+    }
+    // ,
+    // {
+    //   key: null,
+    //   type: 'text',
+    //   label: '文本',
+    //   icon: 'el-icon-notebook-2',
+    //   backgroundColor: '#ffffff',
+    //   className: '',
+    //   issys: 0,
+    //   options: {
+
+    //   }
+    // },
+    // {
+    //   key: null,
+    //   type: 'panel',
+    //   label: '面板',
+    //   icon: 'el-icon-s-order',
+    //   backgroundColor: '#ffffff',
+    //   className: '',
+    //   issys: 0,
+    //   options: {
+
+    //   }
+    // }
+]
