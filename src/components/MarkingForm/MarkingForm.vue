@@ -54,6 +54,28 @@
             </vuedraggable>
           </div>
         </el-aside>
+        <!-- 动态表单模板 -->
+        <el-container class="center-container" direction="vertical">
+          <div class="btn-bar" style="height: 45px">
+            <span style="margin: 0 20px">
+              <el-link href="#" target="_blank">小林博客</el-link>
+            </span>
+            <span style="margin: 0 20px">
+              <el-link href="#" target="_blank">点击获取源码</el-link>
+            </span>
+            <!-- <el-button type="info" size="medium">还原</el-button> -->
+            <!-- <el-button type="info" size="medium" @click="readme">功能介绍</el-button> -->
+            <el-button type="primary" size="medium" @click="getJSON"
+              >复制JSON</el-button
+            >
+            <el-button type="primary" size="medium" @click="previewShow"
+              >预览</el-button
+            >
+            <el-button type="primary" size="medium" @click="testSetting"
+              >test</el-button
+            >
+          </div>
+        </el-container>
       </el-container>
     </el-main>
   </el-container>
@@ -75,7 +97,7 @@ export default {
       // 默认基础字段
       basicComponents,
       // 布局
-      layoutComponents
+      layoutComponents,
     };
   },
   mounted() {},
@@ -83,6 +105,15 @@ export default {
     setClass(icon) {
       return icon;
     },
+    getJSON() {
+
+    },
+    previewShow() {
+
+    },
+    testSetting() {
+        
+    }
   },
 };
 </script>
