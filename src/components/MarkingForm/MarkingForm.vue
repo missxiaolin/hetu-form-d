@@ -75,6 +75,13 @@
               >test</el-button
             >
           </div>
+          <el-main :class="{'widget-empty': widgetForm.list && widgetForm.list.length == 0}">
+            <widget-form-component
+              ref="widgetForm"
+              :data="widgetForm"
+              >
+            </widget-form-component>
+          </el-main>
         </el-container>
       </el-container>
     </el-main>
@@ -86,11 +93,16 @@
 import vuedraggable from "vuedraggable";
 // 左边-配置
 import { basicComponents, layoutComponents } from "../tool/ConponentsConfig";
+import { defaultPageJson } from '../tool/formConfig'
+
+// 中间-主体部分
+import WidgetFormComponent from '../WidgetForm/WidgetForm.vue'
 
 export default {
   name: "MarkingForm",
   components: {
     vuedraggable,
+    WidgetFormComponent
   },
   data() {
     return {
@@ -98,6 +110,7 @@ export default {
       basicComponents,
       // 布局
       layoutComponents,
+      widgetForm: defaultPageJson
     };
   },
   mounted() {},
@@ -112,7 +125,7 @@ export default {
 
     },
     testSetting() {
-        
+
     }
   },
 };
