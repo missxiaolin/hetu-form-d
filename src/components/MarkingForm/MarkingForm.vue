@@ -75,14 +75,32 @@
               >test</el-button
             >
           </div>
-          <el-main :class="{'widget-empty': widgetForm.list && widgetForm.list.length == 0}">
-            <widget-form-component
-              ref="widgetForm"
-              :data="widgetForm"
-              >
+          <el-main
+            :class="{
+              'widget-empty': widgetForm.list && widgetForm.list.length == 0,
+            }"
+          >
+            <widget-form-component ref="widgetForm" :data="widgetForm">
             </widget-form-component>
           </el-main>
         </el-container>
+        <!-- 表单属性设置 -->
+        <el-aside class="markform-right">
+          <el-tabs
+            v-model="activeName"
+            @tab-click="handleClick"
+            :stretch="true"
+          >
+            <el-tab-pane label="字段属性" name="widget">
+              <widget-config :data="widgetFormSelect"></widget-config>
+            </el-tab-pane>
+            <el-tab-pane label="表单属性" name="form">
+              <widget-config-right
+                :data="widgetForm.config"
+              ></widget-config-right>
+            </el-tab-pane>
+          </el-tabs>
+        </el-aside>
       </el-container>
     </el-main>
   </el-container>
@@ -93,24 +111,36 @@
 import vuedraggable from "vuedraggable";
 // 左边-配置
 import { basicComponents, layoutComponents } from "../tool/ConponentsConfig";
-import { defaultPageJson } from '../tool/formConfig'
+import { defaultPageJson } from "../tool/formConfig";
 
 // 中间-主体部分
-import WidgetFormComponent from '../WidgetForm/WidgetForm.vue'
+import WidgetFormComponent from "../WidgetForm/WidgetForm.vue";
+
+// 右边属性
+import WidgetConfig from './MarkingWidgetConfig.vue'
+import WidgetConfigRight from './MarkingWidgetConfigRight.vue'
+import Readme from '../Dialog/Readme'
 
 export default {
   name: "MarkingForm",
   components: {
     vuedraggable,
-    WidgetFormComponent
+    WidgetFormComponent,
+    WidgetConfig,
+    WidgetConfigRight,
+    Readme
   },
   data() {
     return {
+      // 属性控制tab切换：first和second
+      activeName: "widget",
+      // 中间选中组件，右边战术他们的字段属性
+      widgetFormSelect: null,
       // 默认基础字段
       basicComponents,
       // 布局
       layoutComponents,
-      widgetForm: defaultPageJson
+      widgetForm: defaultPageJson,
     };
   },
   mounted() {},
@@ -118,13 +148,10 @@ export default {
     setClass(icon) {
       return icon;
     },
-    getJSON() {
-
-    },
-    previewShow() {
-
-    },
-    testSetting() {
+    getJSON() {},
+    previewShow() {},
+    testSetting() {},
+    handleClick() {
 
     }
   },
