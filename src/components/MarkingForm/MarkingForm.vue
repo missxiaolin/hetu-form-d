@@ -123,12 +123,19 @@
         >
       </span>
     </el-dialog>
+    <!-- 弹出框预览 -->
+    <custom-dialog :widgetForm="widgetForm" v-if="customDialogStatus" ref="_CustomDialog"></custom-dialog>
+    <!-- 介绍 -->
+    <readme ref="_Readme" v-if="readmeStatus"></readme>
   </el-container>
 </template>
 
 <script>
 // 拖拽
 import vuedraggable from "vuedraggable";
+
+// 弹窗提示复制json
+import CustomDialog from '../Dialog/CustomDialog'
 // 左边-配置
 import { basicComponents, layoutComponents } from "../tool/ConponentsConfig";
 import { defaultPageJson } from "../tool/formConfig";
@@ -149,6 +156,7 @@ export default {
     WidgetConfig,
     WidgetConfigRight,
     Readme,
+    CustomDialog
   },
   data() {
     return {
@@ -169,6 +177,11 @@ export default {
       // 布局
       layoutComponents,
       widgetForm: defaultPageJson,
+
+      // 预览
+      customDialogStatus: false,
+      // 功能介绍
+      readmeStatus: false
     };
   },
   mounted() {},
