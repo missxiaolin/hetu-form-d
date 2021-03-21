@@ -103,6 +103,26 @@
         </el-aside>
       </el-container>
     </el-main>
+    <!-- JSON dialog -->
+    <el-dialog
+      title="生成JSON"
+      :visible.sync="getJSONShow"
+      :destroy-on-close="true"
+      center
+    >
+      <div id="jsoneditor" style="height: 400px; width: 100%">
+        {{ jsonTemplate }}
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button
+          class="json-btn"
+          v-clipboard:copy="jsonCopyValue"
+          v-clipboard:success="onCopy"
+          type="primary"
+          >复制JSON</el-button
+        >
+      </span>
+    </el-dialog>
   </el-container>
 </template>
 
@@ -117,9 +137,9 @@ import { defaultPageJson } from "../tool/formConfig";
 import WidgetFormComponent from "../WidgetForm/WidgetForm.vue";
 
 // 右边属性
-import WidgetConfig from './MarkingWidgetConfig.vue'
-import WidgetConfigRight from './MarkingWidgetConfigRight.vue'
-import Readme from '../Dialog/Readme'
+import WidgetConfig from "./MarkingWidgetConfig.vue";
+import WidgetConfigRight from "./MarkingWidgetConfigRight.vue";
+import Readme from "../Dialog/Readme";
 
 export default {
   name: "MarkingForm",
@@ -128,10 +148,18 @@ export default {
     WidgetFormComponent,
     WidgetConfig,
     WidgetConfigRight,
-    Readme
+    Readme,
   },
   data() {
     return {
+      // 弹窗显示JSON数据
+      getJSONShow: false,
+      // 需要显示的JSON数据
+      jsonTemplate: "",
+      // 复制
+      jsonClipboard: null,
+      // 复制给用户的数据
+      jsonCopyValue: "",
       // 属性控制tab切换：first和second
       activeName: "widget",
       // 中间选中组件，右边战术他们的字段属性
@@ -151,9 +179,10 @@ export default {
     getJSON() {},
     previewShow() {},
     testSetting() {},
-    handleClick() {
-
-    }
+    handleClick() {},
+    onCopy(e) {
+      this.$message.success("JSON赋值成功");
+    },
   },
 };
 </script>
