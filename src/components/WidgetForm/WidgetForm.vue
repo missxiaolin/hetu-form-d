@@ -21,12 +21,17 @@
 <script>
 import vuedraggable from 'vuedraggable'
 import { addDraggerWidget } from '../tool/magicGenerate'
+// 常规组件
+import WidgetFormItem from './WidgetFormItem.vue'
 
 export default {
   name: "WidgetForm",
   props: {
     // data 数据
     data: {},
+  },
+  components: {
+      WidgetFormItem
   },
   data() {
     return {};
