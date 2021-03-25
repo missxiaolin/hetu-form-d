@@ -23,6 +23,8 @@ import vuedraggable from 'vuedraggable'
 import { addDraggerWidget } from '../tool/magicGenerate'
 // 常规组件
 import WidgetFormItem from './WidgetFormItem.vue'
+// 布局组件
+import WidgetFormCol from './WidgetFormCol.vue'
 
 export default {
   name: "WidgetForm",
