@@ -66,7 +66,10 @@ export default {
   methods: {
     handleWidgetAdd ({ newIndex, element }) {
       let returnItem = addDraggerWidget(this.data.list[newIndex])
-      console.log(returnItem)
+      // 给返回数据添加双向绑定
+      this.$set(this.data.list, newIndex, returnItem)
+      // 记录当前拖拽进去的item元素
+      this.$store.commit('set_selectWidget', returnItem)
     },
   },
 };
