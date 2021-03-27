@@ -20,17 +20,18 @@
         v-bind="{ group: 'people', ghostClass: 'ghost' }"
         @add="handleWidgetAdd"
       >
-        <div v-for="(item, index) in (data.list || [])" :key="index" class="vuedraggableitem">
+        <!-- 拖拽过来的内容渲染 -->
+        <div
+          v-for="(item, index) in data.list || []"
+          :key="index"
+          class="vuedraggableitem"
+        >
           <template v-if="item.type === 'grid' || item.type === 'panel'">
-            <widget-form-col
-              :key="item.key"
-              :element.sync="item">
+            <widget-form-col :key="item.key" :element.sync="item">
             </widget-form-col>
           </template>
           <template v-else>
-            <widget-form-item
-              :element.sync="item"
-              ></widget-form-item>
+            <widget-form-item :element.sync="item"></widget-form-item>
           </template>
         </div>
       </vuedraggable>
@@ -45,36 +46,42 @@ import { addDraggerWidget } from "../tool/magicGenerate";
 import WidgetFormItem from "./WidgetFormItem.vue";
 // 布局组件
 import WidgetFormCol from "./WidgetFormCol.vue";
-
 export default {
   name: "WidgetForm",
+  components: {
+    vuedraggable,
+    WidgetFormItem,
+    WidgetFormCol,
+  },
   props: {
     // data 数据
     data: {},
   },
-  components: {
-    WidgetFormItem,
-    vuedraggable,
-    WidgetFormCol
-  },
   data() {
     return {};
   },
-  watch: {},
+  watch: {
+    data: {
+      handler: function (val) {
+        console.log(val)
+      },
+      deep: true,
+    },
+  },
   computed: {},
   created() {},
   mounted() {},
   methods: {
-    handleWidgetAdd ({ newIndex, element }) {
-      let returnItem = addDraggerWidget(this.data.list[newIndex])
+    // 拖拽元素添加的时候调用
+    handleWidgetAdd({ newIndex, element }) {
+      let returnItem = addDraggerWidget(this.data.list[newIndex]);
       // 给返回数据添加双向绑定
-      this.$set(this.data.list, newIndex, returnItem)
+      this.$set(this.data.list, newIndex, returnItem);
       // 记录当前拖拽进去的item元素
-      this.$store.commit('set_selectWidget', returnItem)
+      this.$store.commit("set_selectWidget", returnItem);
     },
   },
 };
 </script>
-
-<style lang="scss">
+<style lang="less" scoped>
 </style>

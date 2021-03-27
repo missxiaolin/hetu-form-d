@@ -9,7 +9,7 @@
       <el-form-item
         v-if="data && data.key"
         :class="data.attr.className"
-        prop="data.attr.prop"
+        :prop="data.attr.prop"
         :label="data.attr.label"
         :label-width="data.attr.labelWidth + 'px'"
         :required="data.attr.required"
@@ -45,7 +45,6 @@
         <switch-item v-if="data.type === 'switch'" :data="data"></switch-item>
         <!-- slide -->
         <slider-item v-if="data.type === 'slider'" :data="data"></slider-item>
-
         <time-picker-item
           v-if="data.type === 'timePicker'"
           :data="data"
@@ -73,9 +72,8 @@ import SliderItem from "./WidgetItem/SliderItem";
 import TimePickerItem from "./WidgetItem/TimePickerItem";
 import ColorPickerItem from "./WidgetItem/ColorPickerItem";
 import RateItem from "./WidgetItem/RateItem";
-
 export default {
-  name: "WidgetFormItem",
+  name: "",
   components: {
     InputItem,
     InputNumberItem,
@@ -122,3 +120,5 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+</style>
