@@ -46,8 +46,14 @@
         <!-- slide -->
         <slider-item v-if="data.type === 'slider'" :data="data"></slider-item>
 
-        <time-picker-item v-if="data.type === 'timePicker'" :data="data"></time-picker-item>
-        <color-picker-item v-if="data.type === 'colorPicker'" :data="data"></color-picker-item>
+        <time-picker-item
+          v-if="data.type === 'timePicker'"
+          :data="data"
+        ></time-picker-item>
+        <color-picker-item
+          v-if="data.type === 'colorPicker'"
+          :data="data"
+        ></color-picker-item>
         <rate-item v-if="data.type === 'rate'" :data="data"></rate-item>
       </el-form-item>
     </div>
