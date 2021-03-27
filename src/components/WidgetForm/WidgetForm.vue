@@ -54,7 +54,8 @@ export default {
   },
   components: {
     WidgetFormItem,
-    vuedraggable
+    vuedraggable,
+    WidgetFormCol
   },
   data() {
     return {};
