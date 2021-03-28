@@ -61,12 +61,7 @@ export default {
     return {};
   },
   watch: {
-    data: {
-      handler: function (val) {
-        console.log(val)
-      },
-      deep: true,
-    },
+    
   },
   computed: {},
   created() {},

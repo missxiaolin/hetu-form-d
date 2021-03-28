@@ -137,6 +137,7 @@
 <script>
 // 拖拽
 import vuedraggable from "vuedraggable";
+import { mapGetters } from 'vuex'
 
 // 弹窗提示复制json
 import CustomDialog from "../Dialog/CustomDialog";
@@ -187,6 +188,18 @@ export default {
       // 功能介绍
       readmeStatus: false,
     };
+  },
+  watch: {
+    // 中间选中的组件数据，传递给下一个组件
+    selectWidget: {
+      handler(val) {
+        this.widgetFormSelect = val;
+      },
+      deep: true,
+    },
+  },
+  computed: {
+    ...mapGetters(['selectWidget'])
   },
   mounted() {},
   methods: {
