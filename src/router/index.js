@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import PagePreview from '../views/PagePreview/PagePreview'
 import PageCustom from '../views/PageCustom/PageCustom'
 
@@ -9,8 +8,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/page/view'
   }, {
     path: '/page/view',
     name: 'PagePreview',
