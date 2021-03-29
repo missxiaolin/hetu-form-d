@@ -80,6 +80,48 @@
             </div>
             <!-- input -->
             <input-item v-if="data.type === 'input'" :data="data"></input-item>
+            <!-- inputNumber -->
+            <input-number-item
+              v-if="data.type === 'inputNumber'"
+              :data="data"
+            ></input-number-item>
+            <!-- Autocomplete  -->
+            <autocomplete-item
+              v-if="data.type === 'autocomplete'"
+              :data="data"
+            ></autocomplete-item>
+            <!-- select -->
+            <select-item
+              v-if="data.type === 'select'"
+              :data="data"
+            ></select-item>
+            <!-- radio -->
+            <radio-item v-if="data.type === 'radio'" :data="data"></radio-item>
+            <check-box-item
+              v-if="data.type === 'checkBox'"
+              :data="data"
+            ></check-box-item>
+            <cascader-item
+              v-if="data.type === 'cascader'"
+              :data="data"
+            ></cascader-item>
+            <switch-item
+              v-if="data.type === 'switch'"
+              :data="data"
+            ></switch-item>
+            <slider-item
+              v-if="data.type === 'slider'"
+              :data="data"
+            ></slider-item>
+            <time-picker-item
+              v-if="data.type === 'timePicker'"
+              :data="data"
+            ></time-picker-item>
+            <color-picker-item
+              v-if="data.type === 'colorPicker'"
+              :data="data"
+            ></color-picker-item>
+            <rate-item v-if="data.type === 'rate'" :data="data"></rate-item>
           </div>
         </el-collapse-item>
       </el-collapse>
@@ -105,9 +147,21 @@
 
 <script>
 import { deepClone } from "../tool/tool";
-import DeleteAttr from "../Dialog/DeleteAttr";
 import BaseItem from "./MarkingForm/BaseItem.vue";
 import InputItem from "./MarkingForm/InputItem.vue";
+import InputNumberItem from "./MarkingForm/InputNumberItem";
+import AutocompleteItem from "./MarkingForm/AutocompleteItem";
+import SelectItem from "./MarkingForm/SelectItem";
+import RadioItem from "./MarkingForm/RadioItem";
+import CheckBoxItem from "./MarkingForm/CheckBoxItem";
+import CascaderItem from "./MarkingForm/CascaderItem";
+import SwitchItem from "./MarkingForm/SwitchItem";
+import SliderItem from "./MarkingForm/SliderItem";
+import TimePickerItem from "./MarkingForm/TimePickerItem";
+import ColorPickerItem from "./MarkingForm/ColorPickerItem";
+import RateItem from "./MarkingForm/RateItem";
+
+import DeleteAttr from "../Dialog/DeleteAttr";
 
 export default {
   name: "MarkingWidgetConfig",
@@ -115,6 +169,17 @@ export default {
     BaseItem,
     InputItem,
     DeleteAttr,
+    InputNumberItem,
+    AutocompleteItem,
+    SelectItem,
+    RadioItem,
+    CheckBoxItem,
+    CascaderItem,
+    SwitchItem,
+    SliderItem,
+    TimePickerItem,
+    ColorPickerItem,
+    RateItem,
   },
   props: {
     data: {
