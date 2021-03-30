@@ -205,7 +205,6 @@ export default {
   watch: {},
   computed: {
     show() {
-      console.log(this.data);
       if (this.data && Object.keys(this.data).length > 0) {
         return true;
       }
