@@ -64,7 +64,7 @@
               <el-link href="#" target="_blank">点击获取源码</el-link>
             </span>
             <!-- <el-button type="info" size="medium">还原</el-button> -->
-            <!-- <el-button type="info" size="medium" @click="readme">功能介绍</el-button> -->
+            <el-button type="info" size="medium" @click="readme">功能介绍</el-button>
             <el-button type="primary" size="medium" @click="getJSON"
               >复制JSON</el-button
             >
@@ -213,6 +213,13 @@ export default {
     onCopy(e) {
       this.$message.success("JSON赋值成功");
     },
+    // 功能介绍
+    readme () {
+      this.readmeStatus = true
+      this.$nextTick(() => {
+        this.$refs._Readme.show()
+      })
+    }
   },
 };
 </script>
