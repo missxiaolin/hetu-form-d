@@ -64,7 +64,9 @@
               <el-link href="#" target="_blank">点击获取源码</el-link>
             </span>
             <!-- <el-button type="info" size="medium">还原</el-button> -->
-            <el-button type="info" size="medium" @click="readme">功能介绍</el-button>
+            <el-button type="info" size="medium" @click="readme"
+              >功能介绍</el-button
+            >
             <el-button type="primary" size="medium" @click="getJSON"
               >复制JSON</el-button
             >
@@ -137,7 +139,7 @@
 <script>
 // 拖拽
 import vuedraggable from "vuedraggable";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 // 弹窗提示复制json
 import CustomDialog from "../Dialog/CustomDialog";
@@ -155,6 +157,12 @@ import Readme from "../Dialog/Readme";
 
 export default {
   name: "MarkingForm",
+  // 调用者提供setting
+  provide: function () {
+    return {
+      setting: this.setting,
+    };
+  },
   components: {
     vuedraggable,
     WidgetFormComponent,
@@ -182,9 +190,104 @@ export default {
       // 布局
       layoutComponents,
       widgetForm: defaultPageJson,
-
       // 预览
       customDialogStatus: false,
+      setting: {
+        // 设置
+        events: {
+          test: {
+            change: this.changeTest,
+            blur: this.blurTest,
+          },
+          test1: {
+            "fetch-suggestions": this.fetchSuggestions,
+            "filter-method": this.filterMethod,
+            "remote-method": this.remoteMethod,
+          },
+        },
+        // 是否显示
+        refDisplay: {
+          test: false,
+        },
+        // 不允许编辑
+        refDisabled: {
+          test: true,
+        },
+        // 不允许编辑-添加点击事件
+        refDisabledFunc: {
+          test: this.fn,
+        },
+        // 数据源对应数组的，都添加在这里
+        // value：对应key
+        // label：对应显示的数据
+        optList: {
+          // 单个下啦
+          test: [
+            {
+              userId: 123001,
+              userName: "1111111111",
+            },
+            {
+              userId: 123002,
+              userName: "222222222",
+            },
+            {
+              userId: 123003,
+              userName: "333333333",
+            },
+          ],
+          // 分组下啦
+          test1: [
+            {
+              label1: "分组1",
+              options: [
+                {
+                  value1: 200101,
+                  label1: "44444",
+                },
+                {
+                  value1: 200102,
+                  label1: "55555",
+                },
+              ],
+            },
+            {
+              label1: "分组2",
+              options: [
+                {
+                  value1: 20010101,
+                  label1: "66666",
+                },
+                {
+                  value1: 20010102,
+                  label1: "77777",
+                },
+                {
+                  value1: 20010103,
+                  label1: "888888",
+                },
+                {
+                  value1: 20010104,
+                  label1: "999999",
+                },
+              ],
+            },
+          ],
+        },
+        // 数组数据不规范的，全都在这里添加映射
+        // label：显示的label
+        // value：对应的key
+        optMap: {
+          test: {
+            value: "userId",
+            label: "userName",
+          },
+          test1: {
+            value: "value1",
+            label: "label1",
+          },
+        },
+      },
       // 功能介绍
       readmeStatus: false,
     };
@@ -199,7 +302,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['selectWidget'])
+    ...mapGetters(["selectWidget"]),
   },
   mounted() {},
   methods: {
@@ -214,12 +317,12 @@ export default {
       this.$message.success("JSON赋值成功");
     },
     // 功能介绍
-    readme () {
-      this.readmeStatus = true
+    readme() {
+      this.readmeStatus = true;
       this.$nextTick(() => {
-        this.$refs._Readme.show()
-      })
-    }
+        this.$refs._Readme.show();
+      });
+    },
   },
 };
 </script>
