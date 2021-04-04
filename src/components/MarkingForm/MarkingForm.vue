@@ -309,7 +309,28 @@ export default {
     setClass(icon) {
       return icon;
     },
-    getJSON() {},
+    getJSON() {
+      this.getJSONShow = true;
+      this.jsonTemplate = this.widgetForm;
+      this.$nextTick(() => {
+        // eslint-disable-next-line
+        let editor = ace.edit("jsoneditor");
+        editor.$blockScrolling = Infinity;
+        editor.setFontSize(16);
+        editor.session.setMode("ace/mode/json");
+        editor.setOptions({
+          enableBasicAutocompletion: true,
+          enableSnippets: true,
+          enableLiveAutocompletion: true,
+        });
+        editor.getSession().on("change", function (e) {
+          // 内容变化触发方法
+        });
+        editor.setTheme("ace/theme/monokai");
+        // 记录要复制的数据，注意：必须转字符串
+        this.jsonCopyValue = JSON.stringify(this.widgetForm);
+      });
+    },
     previewShow() {},
     testSetting() {
       // this.setting.refDisplay.test = !this.setting.refDisplay.test
