@@ -15,6 +15,12 @@
       :status-icon="(data.config || {}).statusIcon"
       :validate-on-rule-change="(data.config || {}).validateOnRuleChange"
     >
+      <template v-for="item in data.list">
+        <!-- 栅格-gird -->
+        <template v-if="item.type === 'grid'">
+          <generate-form-col :data="item" :key="item.key"></generate-form-col>
+        </template>
+      </template>
     </el-form>
   </div>
 </template>
