@@ -122,7 +122,7 @@
           v-clipboard:success="onCopy"
           type="primary"
           >复制JSON</el-button
-        >
+        > 
       </span>
     </el-dialog>
     <!-- 弹出框预览 -->
@@ -331,7 +331,18 @@ export default {
         this.jsonCopyValue = JSON.stringify(this.widgetForm);
       });
     },
-    previewShow() {},
+    /**
+     * 预览
+     */
+    previewShow() {
+      this.customDialogStatus = true
+      this.$nextTick(() => {
+        this.$refs._CustomDialog.show()
+      })
+    },
+    /**
+     * test
+     */
     testSetting() {
       // this.setting.refDisplay.test = !this.setting.refDisplay.test
       this.setting.refDisabled.test = !this.setting.refDisabled.test;
@@ -480,7 +491,8 @@ export default {
     fn() {
       console.log("disabled弹窗");
     },
-    handleClick() {},
+    // 左右切换
+    handleClick(item) {},
     onCopy(e) {
       this.$message.success("JSON赋值成功");
     },
