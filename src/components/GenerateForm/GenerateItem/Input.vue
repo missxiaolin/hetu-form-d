@@ -2,7 +2,7 @@
   <div class="">
     <el-input
       v-model="data.options.defaultValue"
-      :style="{width: data.options.width}"
+      :style="{ width: data.options.width }"
       :type="data.options.type"
       :maxlength="data.options.maxlength"
       :minlength="data.options.minlength"
@@ -28,45 +28,40 @@
       :label="data.options.label"
       :tabindex="data.options.tabindex"
       :validate-event="data.options.validateEvent"
-      v-on="itemEvents">
+      v-on="itemEvents"
+    >
     </el-input>
     <Masking v-if="itemDisabled" :data="data"></Masking>
   </div>
 </template>
 <script>
-import mixins from './mixins'
-import Masking from './Masking'
+import mixins from "./mixins";
+import Masking from "./Masking";
 export default {
-  name: 'Input',
+  name: "Input",
   // 接收stting
-  inject: ['setting'],
+  inject: ["setting"],
   mixins: [mixins],
   components: {
-    Masking
+    Masking,
   },
   props: {
     data: {},
-    models: {}
+    models: {},
   },
-  data () {
-    return {
-    }
+  data() {
+    return {};
   },
-  watch: {
+  watch: {},
+  computed: {},
+  created() {
+    this.itemDisabled = this.getDisabled();
+    console.log(this.itemDisabled);
+    this.itemEvents = this.getEvents();
   },
-  computed: {
-  },
-  created () {
-    this.itemDisabled = this.getDisabled()
-    console.log(this.itemDisabled)
-    this.itemEvents = this.getEvents()
-  },
-  mounted () {
-  },
-  methods: {
-  }
-}
+  mounted() {},
+  methods: {},
+};
 </script>
 <style lang="scss" scoped>
-
 </style>

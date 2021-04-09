@@ -27,19 +27,21 @@
       :popper-append-to-body="data.options.popperAppendToBody"
       :automatic-dropdown="data.options.automaticDropdown"
       v-on="itemEvents"
-      >
+    >
       <template v-if="data.options.isGroup">
         <el-option-group
           v-for="group in optconfig.options"
           :key="group[optconfig.label]"
           :label="group[optconfig.label]"
-          :disabled="group.disabled">
+          :disabled="group.disabled"
+        >
           <el-option
             v-for="item in group.options"
             :key="item[optconfig.label]"
             :label="item[optconfig.label]"
             :value="item[optconfig.value]"
-            :item="item.disabled">
+            :item="item.disabled"
+          >
           </el-option>
         </el-option-group>
       </template>
@@ -49,7 +51,8 @@
           :key="item[optconfig.label]"
           :label="item[optconfig.label]"
           :value="item[optconfig.value]"
-          :item="item.disabled">
+          :item="item.disabled"
+        >
         </el-option>
       </template>
     </el-select>
@@ -58,86 +61,91 @@
 </template>
 
 <script>
-import Masking from './Masking'
-import mixins from './mixins'
+import Masking from "./Masking";
+import mixins from "./mixins";
 export default {
-  name: 'Select',
+  name: "Select",
   components: {
-    Masking
+    Masking,
   },
   // 接收stting
-  inject: ['setting'],
+  inject: ["setting"],
   mixins: [mixins],
   props: {
     data: {},
-    models: {}
+    models: {},
   },
-  data () {
-    return {
-    }
+  data() {
+    return {};
   },
-  watch: {
-  },
+  watch: {},
   computed: {
-    optconfig () {
-      let { optList, optMap } = this.setting
-      let model = this.data.model
-      let options = optList[model] || []
+    optconfig() {
+      let { optList, optMap } = this.setting;
+      let model = this.data.model;
+      let options = optList[model] || [];
       if (optMap[model]) {
-        let label = optMap[model].label || 'label'
-        let value = optMap[model].value || 'value'
+        let label = optMap[model].label || "label";
+        let value = optMap[model].value || "value";
         return {
           options: options,
           label: label,
-          value: value
-        }
+          value: value,
+        };
       }
       // 没有指定，添加默认vue
       return {
         options: options,
-        label: 'label',
-        value: 'value'
-      }
-    }
+        label: "label",
+        value: "value",
+      };
+    },
   },
-  created () {
-    this.itemDisabled = this.getDisabled()
-    this.itemEvents = this.getEvents()
+  created() {
+    this.itemDisabled = this.getDisabled();
+    this.itemEvents = this.getEvents();
   },
-  mounted () {
-  },
+  mounted() {},
   methods: {
-    getFilterMethod () {
-      let events = this.setting.events || {}
+    getFilterMethod() {
+      let events = this.setting.events || {};
       if (events.hasOwnProperty(this.data.model)) {
-        if (events[this.data.model].hasOwnProperty('filter-method')) {
-          return events[this.data.model]['filter-method']
+        if (events[this.data.model].hasOwnProperty("filter-method")) {
+          return events[this.data.model]["filter-method"];
         } else {
-          console.error('[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 filter-method 方法即可')
-          return this.fn
+          console.error(
+            "[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 filter-method 方法即可"
+          );
+          return this.fn;
         }
       } else {
-        console.error('[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 filter-method 方法即可')
-        return this.fn
+        console.error(
+          "[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 filter-method 方法即可"
+        );
+        return this.fn;
       }
     },
-    getRemoteMethod () {
-      let events = this.setting.events || {}
+    getRemoteMethod() {
+      let events = this.setting.events || {};
       if (events.hasOwnProperty(this.data.model)) {
-        if (events[this.data.model].hasOwnProperty('remote-method')) {
-          return events[this.data.model]['remote-method']
+        if (events[this.data.model].hasOwnProperty("remote-method")) {
+          return events[this.data.model]["remote-method"];
         } else {
-          console.error('[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 remote-method 方法即可')
-          return this.fn
+          console.error(
+            "[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 remote-method 方法即可"
+          );
+          return this.fn;
         }
       } else {
-        console.error('[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 remote-method 方法即可')
-        return this.fn
+        console.error(
+          "[警告] select 使用自定义搜索方法，可以在 setting 中根据 model 添加 remote-method 方法即可"
+        );
+        return this.fn;
       }
     },
-    fn () {}
-  }
-}
+    fn() {},
+  },
+};
 </script>
 <style lang="scss" scoped>
 </style>

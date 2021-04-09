@@ -1,29 +1,20 @@
 <template>
-  <div class="">
-  </div>
+  <div class=""></div>
 </template>
 <script>
 export default {
-  name: 'Rate',
-  components: {
+  name: "Rate",
+  components: {},
+  props: {},
+  data() {
+    return {};
   },
-  props: {
-  },
-  data () {
-    return {
-    }
-  },
-  watch: {
-  },
-  computed: {
-  },
-  created () {
-  },
-  mounted () {
-  },
-  methods: {
-  }
-}
+  watch: {},
+  computed: {},
+  created() {},
+  mounted() {},
+  methods: {},
+};
 </script>
 <style lang="scss" scoped>
 </style>

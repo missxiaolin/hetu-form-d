@@ -18,57 +18,58 @@
       :debounce="data.options.debounce"
       :tooltip-class="data.options.tooltipClass"
       :marks="getMarks()"
-      v-on="itemEvents">
+      v-on="itemEvents"
+    >
     </el-slider>
     <Masking v-if="itemDisabled" :data="data"></Masking>
   </div>
 </template>
 <script>
-import Masking from './Masking'
-import mixins from './mixins'
+import Masking from "./Masking";
+import mixins from "./mixins";
 export default {
-  name: 'Slide',
+  name: "Slide",
   // 接收stting
-  inject: ['setting'],
+  inject: ["setting"],
   mixins: [mixins],
   components: {
-    Masking
+    Masking,
   },
   props: {
     data: {},
-    models: {}
+    models: {},
   },
-  data () {
-    return {
-    }
+  data() {
+    return {};
   },
-  watch: {
+  watch: {},
+  computed: {},
+  created() {
+    this.itemDisabled = this.getDisabled();
+    this.itemEvents = this.getEvents();
   },
-  computed: {
-  },
-  created () {
-    this.itemDisabled = this.getDisabled()
-    this.itemEvents = this.getEvents()
-  },
-  mounted () {
-  },
+  mounted() {},
   methods: {
-    getMarks () {
-      let events = this.setting.events || {}
+    getMarks() {
+      let events = this.setting.events || {};
       if (events.hasOwnProperty(this.data.model)) {
-        if (events[this.data.model].hasOwnProperty('marks')) {
-          return events[this.data.model]['marks']
+        if (events[this.data.model].hasOwnProperty("marks")) {
+          return events[this.data.model]["marks"];
         } else {
-          console.error('[警告] 如果使用 marks 属性，请在 setting 中根据 model 添加 marks 方法')
-          return {}
+          console.error(
+            "[警告] 如果使用 marks 属性，请在 setting 中根据 model 添加 marks 方法"
+          );
+          return {};
         }
       } else {
-        console.error('[警告] 如果使用 marks 属性，请在 setting 中根据 model 添加 marks 方法')
-        return {}
+        console.error(
+          "[警告] 如果使用 marks 属性，请在 setting 中根据 model 添加 marks 方法"
+        );
+        return {};
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 </style>

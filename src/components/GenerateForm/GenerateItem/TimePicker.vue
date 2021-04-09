@@ -22,7 +22,8 @@
         :name="data.options.name"
         :prefix-icon="data.options.prefixIcon"
         :clear-icon="data.options.clearIcon"
-        v-on="itemEvents">
+        v-on="itemEvents"
+      >
       </el-time-select>
     </template>
     <template v-else>
@@ -47,43 +48,39 @@
         :name="data.options.name"
         :prefix-icon="data.options.prefixIcon"
         :clear-icon="data.options.clearIcon"
-        v-on="itemEvents">
+        v-on="itemEvents"
+      >
       </el-time-picker>
     </template>
   </div>
 </template>
 <script>
-import Masking from './Masking'
-import mixins from './mixins'
+import Masking from "./Masking";
+import mixins from "./mixins";
 export default {
-  name: 'TimePicker',
+  name: "TimePicker",
   components: {
-    Masking
+    Masking,
   },
   // 接收stting
-  inject: ['setting'],
+  inject: ["setting"],
   mixins: [mixins],
   props: {
     data: {},
-    models: {}
+    models: {},
   },
-  data () {
-    return {
-    }
+  data() {
+    return {};
   },
-  watch: {
+  watch: {},
+  computed: {},
+  created() {
+    this.itemDisabled = this.getDisabled();
+    this.itemEvents = this.getEvents();
   },
-  computed: {
-  },
-  created () {
-    this.itemDisabled = this.getDisabled()
-    this.itemEvents = this.getEvents()
-  },
-  mounted () {
-  },
-  methods: {
-  }
-}
+  mounted() {},
+  methods: {},
+};
 </script>
 <style lang="scss" scoped>
 </style>

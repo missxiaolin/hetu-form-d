@@ -14,43 +14,39 @@
       :inactive-color="data.options.inactiveColor"
       :name="data.options.name"
       :validate-event="data.options.validateEvent"
-      v-on="itemEvents">
+      v-on="itemEvents"
+    >
     </el-switch>
     <Masking v-if="itemDisabled" :data="data"></Masking>
   </div>
 </template>
 <script>
-import Masking from './Masking'
-import mixins from './mixins'
+import Masking from "./Masking";
+import mixins from "./mixins";
 export default {
-  name: 'SwitchItem',
+  name: "SwitchItem",
   // 接收stting
-  inject: ['setting'],
+  inject: ["setting"],
   mixins: [mixins],
   components: {
-    Masking
+    Masking,
   },
   props: {
     data: {},
-    models: {}
+    models: {},
   },
-  data () {
-    return {
-    }
+  data() {
+    return {};
   },
-  watch: {
+  watch: {},
+  computed: {},
+  created() {
+    this.itemDisabled = this.getDisabled();
+    this.itemEvents = this.getEvents();
   },
-  computed: {
-  },
-  created () {
-    this.itemDisabled = this.getDisabled()
-    this.itemEvents = this.getEvents()
-  },
-  mounted () {
-  },
-  methods: {
-  }
-}
+  mounted() {},
+  methods: {},
+};
 </script>
 <style lang="scss" scoped>
 </style>
