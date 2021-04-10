@@ -20,6 +20,15 @@
         <template v-if="item.type === 'grid'">
           <generate-form-col :data="item" :key="item.key"></generate-form-col>
         </template>
+        <template v-else-if="item.type === 'panel'"> </template>
+        <!-- 组件 -->
+        <template v-else>
+          <generate-form-item
+            :key="item.key"
+            :data="item"
+            :models="models"
+          ></generate-form-item>
+        </template>
       </template>
     </el-form>
   </div>
